@@ -1,0 +1,90 @@
+# ======================================
+# Go / Gin backend
+# ======================================
+
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Build & cache folders
+bin/
+build/
+dist/
+tmp/
+vendor/
+coverage/
+*.log
+
+# Go build cache
+*.a
+*.o
+*.lo
+*.la
+*.gch
+*.pb.go
+*.gen.go
+
+# IDE & editor
+.vscode/
+.idea/
+*.iml
+*.swp
+.DS_Store
+Thumbs.db
+
+# Go modules
+go.sum
+# (optional, jika kamu mau regenerasi otomatis — tapi biasanya tetap disimpan)
+
+# Local environment
+.env
+.env.*
+*.env.local
+*.env.development
+*.env.production
+*.env.test
+
+# Docker
+docker-compose.override.yml
+*.pid
+
+# Testing
+*.coverprofile
+*.testresult
+testdata/
+__debug_bin
+
+# Swagger auto-generated docs
+docs/
+swagger/
+*.swagger.json
+*.swagger.yaml
+
+# ======================================
+# Optional — kalau pakai tools tambahan
+# ======================================
+
+# VS Code debug folder
+.vscode/
+
+# JetBrains / Goland
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Temp files
+*.tmp
+*.bak
+*.old
+
+# If using Air (live reload)
+tmp/
+.air.toml
+tmp/
