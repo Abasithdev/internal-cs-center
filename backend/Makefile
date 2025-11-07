@@ -1,10 +1,14 @@
-.PHONY: run test build docs
+.PHONY: run test build docs coverage
 
 run:
 	go run ./cmd/server
 
 test:
-	go test ./... -v
+	@go test -v -tags=skip_coverage ./... -coverprofile=coverage.out -coverpkg=./...
+
+coverage:
+	@go tool cover -html=coverage.out -o coverage.html
+	@start coverage.html
 
 build:
 	go build -o bin/server ./cmd/server

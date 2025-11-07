@@ -9,12 +9,7 @@ const docTemplate = `{
     "info": {
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
-        "termsOfService": "http://example.com/terms/",
-        "contact": {
-            "name": "API Support",
-            "url": "http://www.example.com/support",
-            "email": "support@example.com"
-        },
+        "contact": {},
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
@@ -242,14 +237,6 @@ const docTemplate = `{
                 }
             }
         }
-    },
-    "securityDefinitions": {
-        "ApiKeyAuth": {
-            "description": "Type \"Bearer \u003ctoken\u003e\" to authenticate.",
-            "type": "apiKey",
-            "name": "Authorization",
-            "in": "header"
-        }
     }
 }`
 
@@ -257,10 +244,10 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "localhost:8080",
-	BasePath:         "/dashboard/v1",
+	BasePath:         "/api/v1",
 	Schemes:          []string{},
 	Title:            "Internal CS Center API",
-	Description:      "Internal API for CS center.",
+	Description:      "This is the API server for Internal CS Center",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

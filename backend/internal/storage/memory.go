@@ -96,3 +96,10 @@ func (store *MemoryStore) UpdatePayment(payment *domain.Payment) {
 
 	store.payments[payment.ID] = payment
 }
+
+func (store *MemoryStore) ClearPayments() {
+	store.mu.Lock()
+	defer store.mu.Unlock()
+
+	store.payments = make(map[string]*domain.Payment)
+}

@@ -1,5 +1,4 @@
-// Code coverage is disabled for router package as it's a thin wrapper around gin
-//go:build skip_coverage
+//go:build !skip_coverage
 
 package router
 
@@ -9,8 +8,6 @@ import (
 	"abasithdev.github.io/internal-cs-center-backend/internal/service"
 	"abasithdev.github.io/internal-cs-center-backend/internal/storage"
 	"github.com/gin-gonic/gin"
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func NewRouter() *gin.Engine {
@@ -22,11 +19,6 @@ func NewRouter() *gin.Engine {
 	paymentHandler := handler.NewPaymentHandler(paymentService)
 
 	r := gin.Default()
-
-	r.GET("/api", func(c *gin.Context) {
-		c.JSON(200, "")
-	})
-
 	v1 := r.Group("/dashboard/v1")
 	{
 		v1.POST("/auth/login", authHandler.Login)
@@ -38,8 +30,6 @@ func NewRouter() *gin.Engine {
 			protected.PUT("/payments/:id/review", paymentHandler.ReviewPayment)
 		}
 	}
-
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
 }

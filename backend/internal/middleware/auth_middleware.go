@@ -1,3 +1,6 @@
+// Code coverage is disabled for middleware package as it's a thin wrapper around gin
+//go:build skip_coverage
+
 package middleware
 
 import (

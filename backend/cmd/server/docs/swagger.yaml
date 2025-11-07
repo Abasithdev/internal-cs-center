@@ -1,4 +1,4 @@
-basePath: /dashboard/v1
+basePath: /api/v1
 definitions:
   handler.loginRequest:
     properties:
@@ -19,12 +19,8 @@ definitions:
     type: object
 host: localhost:8080
 info:
-  contact:
-    email: support@example.com
-    name: API Support
-    url: http://www.example.com/support
-  description: Internal API for CS center.
-  termsOfService: http://example.com/terms/
+  contact: {}
+  description: This is the API server for Internal CS Center
   title: Internal CS Center API
   version: "1.0"
 paths:
@@ -154,10 +150,4 @@ paths:
       summary: Review payment
       tags:
       - payments
-securityDefinitions:
-  ApiKeyAuth:
-    description: Type "Bearer <token>" to authenticate.
-    in: header
-    name: Authorization
-    type: apiKey
 swagger: "2.0"

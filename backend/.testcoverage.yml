@@ -1,0 +1,8 @@
+exclude:
+  # Generated code
+  - "cmd/server/docs/*"
+  # Main application entry points
+  - "cmd/server/*"
+  # Router and middleware are thin wrappers around gin
+  - "internal/router/*"
+  - "internal/middleware/*"

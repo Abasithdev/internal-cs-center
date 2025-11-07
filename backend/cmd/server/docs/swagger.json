@@ -1,18 +1,13 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "Internal API for CS center.",
+        "description": "This is the API server for Internal CS Center",
         "title": "Internal CS Center API",
-        "termsOfService": "http://example.com/terms/",
-        "contact": {
-            "name": "API Support",
-            "url": "http://www.example.com/support",
-            "email": "support@example.com"
-        },
+        "contact": {},
         "version": "1.0"
     },
     "host": "localhost:8080",
-    "basePath": "/dashboard/v1",
+    "basePath": "/api/v1",
     "paths": {
         "/auth/login": {
             "post": {
@@ -235,14 +230,6 @@
                     "type": "string"
                 }
             }
-        }
-    },
-    "securityDefinitions": {
-        "ApiKeyAuth": {
-            "description": "Type \"Bearer \u003ctoken\u003e\" to authenticate.",
-            "type": "apiKey",
-            "name": "Authorization",
-            "in": "header"
         }
     }
 }
