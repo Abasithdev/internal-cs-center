@@ -18,6 +18,20 @@ func NewPaymentHandler(payment *service.PaymentService) *PaymentHandler {
 	return &PaymentHandler{paymentService: payment}
 }
 
+// ListPayments godoc
+// @Summary List payments
+// @Description Get list of payments with filters
+// @Tags payments
+// @Accept json
+// @Produce json
+// @Param page query int false "page number" default(1)
+// @Param size query int false "page size" default(10)
+// @Param status query string false "filter by status"
+// @Param search query string false "search term"
+// @Success 200 {object} map[string]interface{}
+// @Failure 400 {object} map[string]string
+// @Security ApiKeyAuth
+// @Router /payments [get]
 func (paymentHandler *PaymentHandler) ListPayments(context *gin.Context) {
 	page := utils.QueryInt(context, "page", 1)
 	size := utils.QueryInt(context, "size", 10)
@@ -50,8 +64,21 @@ func (paymentHandler *PaymentHandler) ListPayments(context *gin.Context) {
 	})
 }
 
+// ReviewPayment godoc
+// @Summary Review payment
+// @Description Review a payment (operational role required)
+// @Tags payments
+// @Accept json
+// @Produce json
+// @Param id path string true "payment id"
+// @Success 200 {object} map[string]string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
+// @Security ApiKeyAuth
+// @Router /payments/{id}/review [put]
 func (paymentHandler *PaymentHandler) ReviewPayment(ctx *gin.Context) {
-
 	role, _ := ctx.Get("role")
 
 	if role.(string) != "operational" {

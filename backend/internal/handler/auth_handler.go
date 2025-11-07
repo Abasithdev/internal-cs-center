@@ -25,6 +25,17 @@ type loginResponse struct {
 	Role  string `json:"role"`
 }
 
+// Login godoc
+// @Summary Login
+// @Description Authenticate and return JWT token
+// @Tags auth
+// @Accept json
+// @Produce json
+// @Param body body loginRequest true "credentials"
+// @Success 200 {object} loginResponse
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Router /auth/login [post]
 func (auth *AuthHandler) Login(context *gin.Context) {
 	var request loginRequest
 
