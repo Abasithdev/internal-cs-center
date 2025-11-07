@@ -13,8 +13,10 @@ import (
 func NewRouter() *gin.Engine {
 	store := storage.NewMemoryStore()
 	authService := service.NewAuthService(store, []byte("donttellanyone"))
+	paymentService := service.NewPaymentService(store)
 
 	authHandler := handler.NewAuthHandler(authService)
+	paymentHandler := handler.NewPaymentHandler(paymentService)
 
 	r := gin.Default()
 
@@ -29,9 +31,8 @@ func NewRouter() *gin.Engine {
 		protected := v1.Group("/")
 		protected.Use(middleware.AuthMiddleware(authService))
 		{
-			protected.GET("/payments", func(ctx *gin.Context) {
-				ctx.JSON(200, "authorized")
-			})
+			protected.GET("/payments", paymentHandler.ListPayments)
+			protected.PUT("/payments/:id/review", paymentHandler.ReviewPayment)
 		}
 	}
 
