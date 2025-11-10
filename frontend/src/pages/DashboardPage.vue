@@ -24,7 +24,7 @@ import { getPayments, reviewPayment } from '@/api/paymentApi';
 import { useAuthStore } from '@/stores/auth';
 import { onMounted, ref } from 'vue';
 import type { Payment, PaymentSummary } from '@/type/payment';
-import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import DefaultLayout from '../layouts/DefaultLayout.vue';
 import SummaryWidget from '@/components/SummaryWidget.vue';
 import PaymentTable from '@/components/PaymentTable.vue';
 import Pagination from '@/components/Pagination.vue';
@@ -47,7 +47,7 @@ async function fetchPayments() {
 }
 
 async function onReview(id: string) {
-    if(role != "operation") return;
+    if(role != "operational") return;
     await reviewPayment(id)
     await fetchPayments();
 }

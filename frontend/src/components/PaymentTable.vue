@@ -14,7 +14,7 @@
         <td>{{ p.status }}</td>
         <td>
           <button
-            v-if="role === 'operation'"
+            v-if="role === 'operational'"
             @click="$emit('review', p.id)"
             class="text-blue-500 underline"
             :disabled="p.reviewed"
