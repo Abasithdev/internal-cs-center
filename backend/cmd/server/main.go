@@ -23,11 +23,12 @@ func main() {
 	_ = godotenv.Load() // loads .env if present
 
 	config.ConfigureSwagger()
+	appConfig := config.Load()
 
-	log.Println("Starting server :8080")
+	log.Println("Starting server :" + appConfig.Port)
 
 	r := router.NewRouter()
-	if err := r.Run(":8080"); err != nil {
+	if err := r.Run(":" + appConfig.Port); err != nil {
 		log.Fatal(err)
 	}
 }

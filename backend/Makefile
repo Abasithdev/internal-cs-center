@@ -1,7 +1,7 @@
 .PHONY: run test build docs coverage
 
 run:
-	go run ./cmd/server
+	go run -tags=skip_coverage ./cmd/server
 
 test:
 	@go test -v -tags=skip_coverage ./... -coverprofile=coverage.out -coverpkg=./...
@@ -11,7 +11,7 @@ coverage:
 	@start coverage.html
 
 build:
-	go build -o bin/server ./cmd/server
+	go build -tags=skip_coverage -o bin/server ./cmd/server
 
 docs:
-	swag init -g ./cmd/server/main.go -o ./cmd/server/docs
+	swag init -g ./cmd/server/main.go -o ./docs

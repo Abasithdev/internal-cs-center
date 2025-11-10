@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"abasithdev.github.io/internal-cs-center-backend/cmd/server/docs"
+	"abasithdev.github.io/internal-cs-center-backend/docs"
 )
 
 // ConfigureSwagger sets up Swagger configuration from environment variables
